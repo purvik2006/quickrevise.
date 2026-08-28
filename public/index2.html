@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickRevise - Smart Exam Notes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style2.css"> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <!-- Split-Screen Auth Section -->
+    <div id="auth-wrapper">
+        <div class="auth-image-panel">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Students studying">
+            <div class="auth-image-overlay">
+                <h1>Build Your Ultimate Exam Cheat Sheet.</h1>
+                <p>Compile videos, PDFs, and structured notes in one place.</p>
+            </div>
+        </div>
+        <div class="auth-form-panel">
+            <div class="auth-box">
+                <h2>QuickRevise</h2>
+                <p class="subtitle">Welcome back! Please enter your details.</p>
+                <input type="email" id="auth-email" placeholder="Email Address (e.g. you@gmail.com)" required />
+                <input type="password" id="auth-password" placeholder="Password" required />
+                <div class="auth-buttons">
+                    <button onclick="handleAuth('login')">Sign In</button>
+                    <button class="secondary" onclick="handleAuth('register')">Create Account</button>
+                </div>
+                <p id="auth-msg"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- App Dashboard with Sidebar -->
+    <div id="app-wrapper" class="hidden">
+        
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3>📚 QuickRevise</h3>
+                <p id="user-display" class="user-badge"></p>
+            </div>
+            <button class="new-note-btn" onclick="startNewNote()">+ Create New Note</button>
+            <div class="saved-notes-list" id="notes-list">
+                <!-- Notes will populate here -->
+            </div>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </aside>
+
+        <!-- Main Workspace -->
+        <main class="workspace">
+            <header class="workspace-header">
+                <input type="text" id="note-title" placeholder="Topic Name (e.g., Line Projection & Alpha/Beta Inclination)" />
+                <div class="header-actions">
+                    <button onclick="saveNote()" class="save-btn">💾 Save</button>
+                    <button onclick="exportToPDF()" class="pdf-btn">📄 Export PDF</button>
+                </div>
+            </header>
+
+            <div class="rich-toolbar">
+                
+                <div class="divider"></div>
+                <button class="tool-btn" onclick="formatText('bold')"><b>B</b></button>
+                <button class="tool-btn" onclick="formatText('italic')"><i>I</i></button>
+                <button class="tool-btn" onclick="formatText('underline')"><u>U</u></button>
+                <button class="tool-btn" onclick="formatText('insertUnorderedList')">• List</button>
+                <div class="divider"></div>
+                
+                <input type="text" id="video-url" placeholder="Paste YouTube link..." />
+                <button class="tool-btn embed" onclick="embedVideo()">+ Embed</button>
+                
+                <!-- Hidden PDF Input & Custom Button -->
+                <input type="file" id="pdf-upload" accept="application/pdf" class="hidden" onchange="uploadPDF(event)" />
+                <button class="tool-btn embed" style="color:#e11d48; border-color:#fecdd3; background:#fff1f2;" onclick="document.getElementById('pdf-upload').click()">📎 Upload PDF</button>
+            </div>
+
+            <div id="editor-container">
+                <div id="editor" contenteditable="true" placeholder="Start typing here... (Tip: Press Ctrl+V to paste screenshots directly)"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

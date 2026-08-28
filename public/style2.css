@@ -1,0 +1,73 @@
+:root {
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --bg-color: #f1f5f9;
+    --surface: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+}
+
+* { box-sizing: border-box; font-family: 'Inter', sans-serif; margin: 0; padding: 0; }
+body { background-color: var(--bg-color); color: var(--text-main); height: 100vh; overflow: hidden; }
+.hidden { display: none !important; }
+
+/* ---------------- Split Screen Auth ---------------- */
+#auth-wrapper { display: flex; height: 100vh; width: 100%; }
+.auth-image-panel { flex: 1; position: relative; overflow: hidden; display: none; }
+@media (min-width: 768px) { .auth-image-panel { display: block; } }
+.auth-image-panel img { width: 100%; height: 100%; object-fit: cover; }
+.auth-image-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 40px; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: white; }
+.auth-image-overlay h1 { font-size: 2.5rem; margin-bottom: 10px; }
+
+.auth-form-panel { flex: 1; display: flex; align-items: center; justify-content: center; background: white; }
+.auth-box { width: 100%; max-width: 380px; padding: 20px; }
+.auth-box h2 { font-size: 28px; margin-bottom: 8px; }
+.auth-box input { width: 100%; padding: 14px; margin: 8px 0 16px; border: 1px solid var(--border); border-radius: 8px; font-size: 15px; }
+.auth-buttons { display: flex; gap: 12px; }
+
+button { padding: 12px 20px; border: none; border-radius: 8px; background: var(--primary); color: white; cursor: pointer; font-weight: 600; font-size: 14px; transition: 0.2s; }
+button:hover { background: var(--primary-hover); }
+button.secondary { background: white; color: var(--text-main); border: 1px solid var(--border); }
+#auth-msg { margin-top: 16px; font-size: 14px; }
+
+/* ---------------- App Layout ---------------- */
+#app-wrapper { display: flex; height: 100vh; width: 100%; }
+
+/* Sidebar */
+.sidebar { width: 280px; background: white; border-right: 1px solid var(--border); display: flex; flex-direction: column; padding: 20px; }
+.sidebar-header { margin-bottom: 20px; }
+.user-badge { font-size: 13px; color: var(--primary); font-weight: 600; background: #e0e7ff; padding: 4px 8px; border-radius: 4px; display: inline-block; margin-top: 5px; }
+.new-note-btn { width: 100%; background: #f8fafc; color: var(--text-main); border: 1px dashed #cbd5e1; margin-bottom: 20px; }
+.new-note-btn:hover { background: #f1f5f9; border-color: var(--primary); }
+.saved-notes-list { flex: 1; overflow-y: auto; }
+.note-item { padding: 12px; border-bottom: 1px solid var(--border); cursor: pointer; font-size: 14px; display: flex; justify-content: space-between; align-items: center;}
+.note-item:hover { background: #f8fafc; }
+.del-btn { background: #fee2e2; color: #ef4444; padding: 4px 8px; font-size: 12px; border-radius: 4px; }
+.logout-btn { background: #fff1f2; color: #e11d48; margin-top: auto; }
+
+/* Workspace */
+.workspace { flex: 1; display: flex; flex-direction: column; background: var(--bg-color); }
+.workspace-header { display: flex; padding: 20px 30px; background: white; border-bottom: 1px solid var(--border); gap: 20px; align-items: center;}
+#note-title { flex: 1; font-size: 24px; font-weight: 600; border: none; outline: none; }
+.header-actions { display: flex; gap: 10px; }
+.save-btn { background: #10b981; } .pdf-btn { background: #0ea5e9; }
+
+/* Rich Toolbar */
+.rich-toolbar { display: flex; gap: 8px; padding: 12px 30px; background: white; border-bottom: 1px solid var(--border); align-items: center; flex-wrap: wrap;}
+select { padding: 8px; border: 1px solid var(--border); border-radius: 6px; outline: none; }
+.divider { width: 1px; height: 24px; background: var(--border); margin: 0 8px; }
+.tool-btn { padding: 8px 12px; background: white; color: var(--text-main); border: 1px solid var(--border); border-radius: 6px; }
+.tool-btn:hover { background: #f1f5f9; }
+#video-url { padding: 8px 12px; border: 1px solid var(--border); border-radius: 6px; width: 250px; }
+.tool-btn.embed { background: #e0f2fe; color: #0284c7; border-color: #bae6fd; }
+
+/* Editor Canvas */
+#editor-container { flex: 1; overflow-y: auto; padding: 30px; }
+#editor { background: white; min-height: 100%; padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); outline: none; line-height: 1.7; font-size: 16px; }
+#editor img { max-width: 100%; border-radius: 8px; margin: 10px 0; border: 1px solid var(--border); }
+
+/* Embed Cards (Video & PDF) */
+.video-card { background: #f0f9ff; border: 1px solid #bae6fd; border-left: 5px solid #0ea5e9; padding: 16px; border-radius: 6px; margin: 20px 0; font-size: 15px; }
+.video-card a { color: #0284c7; font-weight: 500; }
+.pdf-embed-card { margin: 20px 0; border-radius: 8px; overflow: hidden; border: 1px solid #cbd5e1; background: white; }
